@@ -127,20 +127,20 @@ class NotificationServices {
   //   });
   // }
 
-  // Future<void> setupInteractMessage(BuildContext context) async {
-  //   //When app is terminated........................
-  //   RemoteMessage? initialMessage =
-  //       await FirebaseMessaging.instance.getInitialMessage();
+  Future<void> setupInteractMessage(BuildContext context) async {
+    //When app is terminated........................
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
 
-  //   if (initialMessage != null) {
-  //     handleMessageNotification(context, initialMessage);
-  //   }
+    if (initialMessage != null) {
+      handleMessageNotification(context, initialMessage);
+    }
 
-  //   //When app is killed............................
-  //   FirebaseMessaging.onMessageOpenedApp.listen((event) {
-  //     handleMessageNotification(context, event);
-  //   });
-  // }
+    //When app is killed............................
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {
+      handleMessageNotification(context, event);
+    });
+  }
 
   void handleMessageNotification(BuildContext context, RemoteMessage message) {
     if (message.data['type'] == 'msg') {
