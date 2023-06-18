@@ -142,16 +142,16 @@ class NotificationServices {
   //   });
   // }
 
-  // void handleMessageNotification(BuildContext context, RemoteMessage message) {
-  //   if (message.data['type'] == 'msg') {
-  //     Navigator.push(
-  //         context,
-  //         MaterialPageRoute(
-  //             builder: (context) => MessageScreen(
-  //                   id: message.data['id'],
-  //                 )));
-  //   }
-  // }
+  void handleMessageNotification(BuildContext context, RemoteMessage message) {
+    if (message.data['type'] == 'msg') {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MessageScreen(
+                    id: message.data['id'],
+                  )));
+    }
+  }
 
   Future forgroundMessage() async {
     await FirebaseMessaging.instance
