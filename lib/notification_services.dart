@@ -153,12 +153,12 @@ class NotificationServices {
   //   }
   // }
 
-  // Future forgroundMessage() async {
-  //   await FirebaseMessaging.instance
-  //       .setForegroundNotificationPresentationOptions(
-  //     alert: true,
-  //     sound: true,
-  //     badge: true,
-  //   );
-  // }
+  Future forgroundMessage() async {
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      sound: true,
+      badge: true,
+    );
+  }
 }
