@@ -30,25 +30,25 @@ class NotificationServices {
     );
   }
 
-  // void firebaseInit(BuildContext context) async {
-  //   FirebaseMessaging.onMessage.listen((message) {
-  //     if (kDebugMode) {
-  //       print(message.notification!.title.toString());
-  //       print(message.notification!.body.toString());
-  //       print(message.data.toString());
-  //     }
-  //     if (Platform.isIOS) {
-  //       forgroundMessage();
-  //     }
+  void firebaseInit(BuildContext context) async {
+    FirebaseMessaging.onMessage.listen((message) {
+      if (kDebugMode) {
+        print(message.notification!.title.toString());
+        print(message.notification!.body.toString());
+        print(message.data.toString());
+      }
+      if (Platform.isIOS) {
+        forgroundMessage();
+      }
 
-  //     if (Platform.isAndroid) {
-  //       initLocalNotification(context, message);
-  //       showNotification(message);
-  //     } else {
-  //       showNotification(message);
-  //     }
-  //   });
-  // }
+      if (Platform.isAndroid) {
+        initLocalNotification(context, message);
+        showNotification(message);
+      } else {
+        showNotification(message);
+      }
+    });
+  }
 
   Future<void> showNotification(RemoteMessage message) async {
     AndroidNotificationChannel channel = AndroidNotificationChannel(
