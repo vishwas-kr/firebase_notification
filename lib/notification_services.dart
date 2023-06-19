@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_notification/message_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationServices {
@@ -89,7 +88,9 @@ class NotificationServices {
   }
 
   Future<void> requestNotificationPermission() async {
-    print("Entering request permission...");
+    if (kDebugMode) {
+      print("Entering request permission...");
+    }
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
       announcement: true,
@@ -99,7 +100,9 @@ class NotificationServices {
       provisional: true,
       sound: true,
     );
-    print("Exiting request permission............");
+    if (kDebugMode) {
+      print("Exiting request permission............");
+    }
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       if (kDebugMode) {
         print('User granted permission');
@@ -123,7 +126,9 @@ class NotificationServices {
 
   void isTokenRefresh() async {
     messaging.onTokenRefresh.listen((event) {
-      print(event.toString());
+      if (kDebugMode) {
+        print(event.toString());
+      }
     });
   }
 
