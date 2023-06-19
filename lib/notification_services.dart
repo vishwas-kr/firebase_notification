@@ -121,11 +121,11 @@ class NotificationServices {
   //   return token!;
   // }
 
-  // void isTokenRefresh() async {
-  //   messaging.onTokenRefresh.listen((event) {
-  //     print(event.toString());
-  //   });
-  // }
+  void isTokenRefresh() async {
+    messaging.onTokenRefresh.listen((event) {
+      print(event.toString());
+    });
+  }
 
   Future<void> setupInteractMessage(BuildContext context) async {
     //When app is terminated........................
